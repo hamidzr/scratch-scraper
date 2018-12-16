@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/hamidzr/scratch-scraper/issues"
   },
-  "homepage": "https://github.com/hamidzr/scratch-scraper#readme"
+  "homepage": "https://github.com/hamidzr/scratch-scraper#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "js-yaml": "^3.12.0"
+  }
 }
