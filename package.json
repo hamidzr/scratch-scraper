@@ -1,0 +1,23 @@
+{
+  "name": "scratch-projects",
+  "version": "1.0.0",
+  "description": "Scraper for public scratch projects.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamidzr/scratch-scraper.git"
+  },
+  "keywords": [
+    "scraper",
+    "scratch"
+  ],
+  "author": "Hamid Zare",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hamidzr/scratch-scraper/issues"
+  },
+  "homepage": "https://github.com/hamidzr/scratch-scraper#readme"
+}
