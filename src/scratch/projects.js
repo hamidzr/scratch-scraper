@@ -1,22 +1,4 @@
-const axios = require('axios');
-
-
-
-function getRequest(url) {
-  return axios({
-    method: 'get',
-    url,
-    headers: {
-      'origin': 'https://scratch.mit.edu',
-      'accept-encoding': 'gzip, deflate, br',
-      'accept': '*/*',
-      'referer': 'https://scratch.mit.edu/explore/projects/all',
-      'authority': 'api.scratch.mit.edu',
-      'cache-control': 'no-cache',
-    }
-  })
-    .then(res => res.data);
-}
+const getRequest = require('../utils').getRequest;
 
 // search for projects
 function requestProjects(opts) {// offset=0, query='*', mode) {
@@ -43,7 +25,7 @@ function remixTree(projectId) {
 }
 
 
-// user's shared projects https://scratch.mit.edu/users/andpeggy1j/projects/
+// TODO projects in a studio(playlist): https://scratch.mit.edu/users/USERNAME/
 
 
 if (require.main === module) {
