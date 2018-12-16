@@ -22,6 +22,7 @@
   "homepage": "https://github.com/hamidzr/scratch-scraper#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "debug": "^4.1.0",
     "js-yaml": "^3.12.0"
   }
 }
