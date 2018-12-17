@@ -1,5 +1,6 @@
 const axios = require('axios');
-const jsdom = require("jsdom");
+const jsdom = require('jsdom');
+const logger = require('./logger').fork('utils');
 const { JSDOM } = jsdom;
 
 function getRequest(url) {

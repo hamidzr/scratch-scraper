@@ -5,7 +5,7 @@ function requestProjects(opts) {// offset=0, query='*', mode) {
   const defaultOpts = {
     offset: 0,
     query: '*',
-    model: undefined,
+    model: undefined, // recent, trending
   };
   opts = {...defaultOpts, opts};
 
@@ -26,6 +26,10 @@ function remixTree(projectId) {
 
 
 // TODO projects in a studio(playlist): https://scratch.mit.edu/users/USERNAME/
+
+// TODO project comments https://scratch.mit.edu/site-api/comments/project/PROJECTID/?page=1
+
+// ajax https://scratch.mit.edu/site-api/projects/in/4328258/1/
 
 
 if (require.main === module) {
