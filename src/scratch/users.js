@@ -8,12 +8,22 @@ function userMetadata(username) {
   return getRequest(`https://api.scratch.mit.edu/users/${username}`)
 }
 
-async function usersFromComments(username) {
-  logger.trace('getting users from comments', username);
-  let dom = await load(`https://scratch.mit.edu/site-api/comments/user/${username}/?page=1`);
-  let users = dom.window.document.querySelectorAll('div.name a');
+
+function parseUsersFromComments(commentsPage) {
+  let users = commentsPage.window.document.querySelectorAll('div.name a');
   users = toArray(users).map(uEl => uEl.textContent);
   return users;
+}
+
+function userCommentsUrl(username) {
+  return `https://scratch.mit.edu/site-api/comments/user/${username}/?page=1`
+}
+
+// todo grab other pages, paginate
+async function fetchUsersFromComments(username) {
+  logger.trace('getting users from comments', username);
+  let dom = await load(userCommentsUrl(username));
+  return parseUsersFromComments(dom);
 }
 
 // https://scratch.mit.edu/users/USERNAME/projects/
@@ -26,5 +36,7 @@ async function usersFromComments(username) {
 
 
 module.exports = {
-  usersFromComments,
+  fetchUsersFromComments,
+  userCommentsUrl,
+  parseUsersFromComments,
 };
