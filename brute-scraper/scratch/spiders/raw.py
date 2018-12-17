@@ -73,12 +73,13 @@ class RawSpider(scrapy.Spider):
                     }
       yield project_dic
     elif has_regex(response.url, userpage_re):
-      profile = response.css('#profile-data').extract_first()
-      profile_dic = {'username': profile.css('h2::text').extract_first(),
-                        'details': profile.css('.profile-details::text').extract_first(),
-                        'counts': response.css('.box-head h4::text')[0:4].extract()
-                       }
-      yield profile_dic
+      profile = response.css('#profile-data')
+      if profile is not None:
+        profile_dic = {'username': profile.css('h2::text').extract_first(),
+                          'details': profile.css('.profile-details::text').extract_first(),
+                          'counts': response.css('.box-head h4::text')[0:4].extract()
+                         }
+        yield profile_dic
 
     # save the page contents
     # filename = f'quotes-{response.url}.html'
