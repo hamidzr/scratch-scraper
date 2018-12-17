@@ -26,6 +26,13 @@ async function fetchUsersFromComments(username) {
   return parseUsersFromComments(dom);
 }
 
+
+function parseUsersFromFollowers(followersDom) {
+  let users = followersDom.window.document.querySelectorAll('ul li .title a');
+  users = toArray(users).map(uEl => uEl.textContent.trim());
+  return users;
+}
+
 // https://scratch.mit.edu/users/USERNAME/projects/
 // https://scratch.mit.edu/users/USERNAME/favorites/
 // https://scratch.mit.edu/users/USERNAME/studios_following/
@@ -34,6 +41,15 @@ async function fetchUsersFromComments(username) {
 // https://scratch.mit.edu/users/USERNAME/followers/
 // https://scratch.mit.edu/users/USERNAME/
 
+
+if (require.main === module) {
+  (async function() {
+    console.log('called directly');
+    let dom = await load('https://scratch.mit.edu/users/ScratchCat/followers/');
+    let users = parseUsersFromFollowers(dom);
+    console.log(users);
+  }());
+}
 
 module.exports = {
   fetchUsersFromComments,
