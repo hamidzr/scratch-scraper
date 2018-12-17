@@ -36,6 +36,7 @@ class Crawler {
 
     this._queue = []; // queue of discovered urls
     this._visited = {}; // keep track of visited urls
+    this._seenUrls = [];
     this.crawledPages = 0;
   }
 
@@ -66,6 +67,13 @@ class Crawler {
     return newUrls;
   }
 
+  _findUrls(dom) {
+    let linkEls = dom.window.document.querySelectorAll('a');
+    let location = dom.window.document.location.href; // store this too..
+    let links = Array.from(linkEls).map(el => el.href);
+    return links;
+  }
+
   // carwls a batch
   async crawl() {
     let urls = this._pickNewUrls(this.reqBatch);
@@ -73,8 +81,12 @@ class Crawler {
       try {
         this.markCrawled(); // not actually crawled yet..
         let resp = await load(url);
-        const newUrls = this.pageParser(resp); // maybe return the values too?
-        this._queueNewUrls(newUrls);
+
+        const allUrls = this._findUrls(resp);
+        this._seenUrls.push(...allUrls);
+
+        const targetNewLinks = this.pageParser(resp); // maybe return the values too?
+        this._queueNewUrls(targetNewLinks);
       } catch (e) {
         this.logger.error('error crawling', url);
       }
