@@ -24,6 +24,6 @@ Logger.prototype.fork = function(name) {
     return new Logger([this._name, name].join(':'));
 };
 
-const logger = new Logger('scraper');
+const logger = new Logger('scratch');
 
 module.exports = logger;
