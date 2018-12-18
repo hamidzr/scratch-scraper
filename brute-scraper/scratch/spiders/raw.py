@@ -62,6 +62,7 @@ class RawSpider(scrapy.Spider):
     elif has_regex(response.url, projectpage_re):
       proj_sel = response.css('#project')
       project_dic = {'projectTitle': proj_sel.css('h2#title::text').extract_first(),
+                     'projectUrl': response.url,
                      'owner': proj_sel.css('#owner::text').extract_first(),
                      'tags': response.css('#project-tags span.tag a::text').extract(),
                      'modified': proj_sel.css('.date-updated::text').extract_first(),
