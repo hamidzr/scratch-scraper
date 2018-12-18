@@ -92,7 +92,7 @@ class RawSpider(scrapy.Spider):
       if next_page is not None:
         next_page = next_page.extract()
         if is_interesting(next_page):
-          yield response.follow(next_page, self.parse)
+          yield response.follow(next_page, meta={'download_timeout': 20})
 
 
 
