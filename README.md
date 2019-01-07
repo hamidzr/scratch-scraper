@@ -1,5 +1,8 @@
 # Scratch Scraper
 Scraper for public Scratch projects.
+Implements two different scrapers:
+1. JS based simplistic scraper w/o a good spider
+2. Py based using Scrapy w/ a spider
 
 
 ## TODO
