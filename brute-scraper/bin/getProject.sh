@@ -6,9 +6,9 @@ function getProjContents()
 {
   local id=$1
   # download it if it isn't downloaded yet
-  if [ ! -f $id.json ]; then
+  if [ ! -f $id.project ]; then
     local url="https://projects.scratch.mit.edu/internalapi/project/$id/get"
-    curl -s -C - $url -o $id.json
+    curl -s -C - $url -o $id.project
     echo $id captured
   else
     echo $id skipped
