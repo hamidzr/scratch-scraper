@@ -7,7 +7,7 @@
 function dirName()
 {
   project_id=$1
-  local dir_name=$(echo $project_id  | md5sum | sed 's/\([a-z0-9]\{3\}\).*/\1/')
+  local dir_name=$(echo $project_id  | md5sum | sed 's/\([a-z0-9]\{2\}\).*/\1/')
   echo $dir_name
 }
 
